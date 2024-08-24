@@ -55,4 +55,60 @@ The SSL/TLS handshake is a process that establishes a secure connection between 
 4. Key Exchange: The client and server exchange keys to establish a secure connection.
 5. Finished: The client and server exchange messages to confirm that the handshake is complete.
 
+## HTTP Methods
+
+HTTP defines several methods to indicate the desired action to be performed on a resource. The common HTTP methods are:
+- GET: Retrieves data from the server.
+- POST: Submits data to the server.
+- PUT: Updates an existing resource.
+- DELETE: Deletes a resource.
+- HEAD: Retrieves response headers only.
+- OPTIONS: Retrieves the supported HTTP methods.
+- PATCH: Partially updates a resource.
+
+Most modern web applications mainly rely on the GET and POST methods. However, any web application that utilizes REST APIs also rely on PUT and DELETE, which are used to update and delete data on the API endpoint, respectively.
+
+## HTTP Status Codes
+
+HTTP status codes indicate the status of the HTTP request. The common HTTP status codes are:
+- 1xx: Informational
+- 2xx: Success
+- 3xx: Redirection
+- 4xx: Client Error
+- 5xx: Server Error
+
+Common HTTP status codes:
+- 200 OK: The request was successful.
+- 201 Created: The resource was created.
+- 204 No Content: The server successfully processed the request but did not return any content.
+- 301 Moved Permanently: The resource has been moved permanently.
+- 302 Found: The resource has been found.
+- 400 Bad Request: The request was invalid.
+- 401 Unauthorized: Authentication is required.
+- 403 Forbidden: Access is forbidden.
+- 404 Not Found: The resource was not found.
+- 500 Internal Server Error: The server encountered an error.
+
+## HTTP Headers
+
+HTTP headers provide additional information about the request or response. The common HTTP headers are:
+
+- `Content-Type`: Specifies the MIME type of the content.
+- `Content-Length`: Specifies the length of the content in bytes.
+- `User-Agent`: Specifies the user agent making the request.
+- `Host`: Specifies the domain name of the server.
+- `Accept`: Specifies the MIME types accepted by the client
+- `Authorization`: Specifies the credentials for authentication.
+- `Cache-Control`: Specifies caching directives.
+- `Cookie`: Specifies the cookies sent by the server.
+- `Location`: Specifies the URL for redirection.
+
+### Security headers
+
+- `Strict-Transport-Security`: Enforces the use of HTTPS.
+- `Content-Security-Policy`: Specifies the content security policy. This header helps prevent cross-site scripting attacks. Instructs the browser to only load resources from specific origins.
+- `X-Content-Type-Options`: Prevents browsers from MIME-sniffing a response away from the declared content-type.
+- `X-Frame-Options`: Prevents clickjacking attacks by ensuring that a web page can only be displayed in a frame on the same origin as the page itself.
+- `Referrer-Policy`: Controls how much referrer information should be included with requests.
+
 

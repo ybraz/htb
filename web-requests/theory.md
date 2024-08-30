@@ -13,14 +13,16 @@ HTTP is an application-level protocol used to access the World Wide Web resource
 3. The server processes the request and sends an HTTP response back to the client.
 4. The client receives the response and processes it.
 
-### cURL
+## cURL
 
 cURL is a command-line tool used to transfer data using various protocols. It supports HTTP, HTTPS, FTP, FTPS, and more. cURL is widely used to test web servers and troubleshoot network issues. 
 
 cURL commands:
 - `curl http://example.com`: Sends an HTTP GET request to the server.
 - `curl -X POST http://example.com`: Sends an HTTP POST request to the server.
+- `curl -d "param1=value1&param2=value2" http://example.com`: Sends a POST request with data.
 - `curl -I http://example.com`: Sends a HEAD request to the server and displays the response headers.
+- `curl -b "cookie1=value1; cookie2=value2" http://example.com`: Sends a request with cookies.
 - `curl -v http://example.com`: Displays detailed information about the request and response.
 - `curl -o file.txt http://example.com`: Saves the response to a file.
 - `curl -u username:password http://example.com`: Sends the request with basic authentication.
@@ -111,4 +113,24 @@ HTTP headers provide additional information about the request or response. The c
 - `X-Frame-Options`: Prevents clickjacking attacks by ensuring that a web page can only be displayed in a frame on the same origin as the page itself.
 - `Referrer-Policy`: Controls how much referrer information should be included with requests.
 
+## POST
 
+The POST method is used to submit data to the server. Unlike HTTP Get, which places user parameters within the URL, in HTTP Post the data is sent in the body of the request. This has three main benefits:
+1. Lack of logging: As POST requests may transfer large files, it would not be efficient for the server to log all uploaded files as part of the requested URL, as would be the case with GET requests.
+
+2. Less Encondig Requirements: As the data is sent in the body of the request, there is no need to encode the data in the URL, which is required for GET requests. URLs are made to be shared.
+
+3. More Data Can Be Sent: GET requests are limited by the URL length, which is typically 2048 characters. POST requests have no such limitation.
+ 
+POST requests are commonly used to create new resources on the server. For example, when submitting a form on a website, the data is sent to the server using a POST reques.
+
+## CRUD API
+
+CRUD stands for Create, Read, Update, and Delete. A CRUD API is an API that provides endpoints to perform these operations on a resource. The common HTTP methods used in a CRUD API are:
+
+- POST: Create a new resource.
+- GET: Retrieve a resource.
+- PUT: Update an existing resource.
+- DELETE: Delete a resource.
+
+CRUD APIs are widely used in web applications to interact with databases and perform operations on resources. For example, a blog application may have CRUD APIs to create, read, update, and delete blog posts.

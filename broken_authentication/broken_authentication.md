@@ -145,3 +145,37 @@ Completely Automated Public Turing test to tell Computers and Humans Apart (CAPT
 
 ## Default Credentials
 
+Many web applications are set up with default credentials that are rarely changed by users. Default credentials are often used during the initial setup of the application and are intended to be changed by the user after installation. However, users frequently neglect to change the default credentials, leaving the application vulnerable to unauthorized access.
+
+Attackers can exploit default credentials to gain unauthorized access to web applications. They can use default usernames and passwords to log in to the application and take control of the system. To prevent this, users should always change the default credentials to unique, strong passwords.
+
+Default credentials are often published in documentation or online forums, making them easily accessible to attackers. Attackers can use tools like Shodan to scan the internet for devices or services that are using default credentials. Once they identify a target, they can attempt to log in using the default credentials and gain access to the system.
+
+Many platforms provide lists of default credentials for a wide variety of web applications. Such an example is the web database maintained by CIRT.net.
+
+Further resources include [SecLists Default Credentials](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Default-Credentials) as well as the [SCADA](https://github.com/scadastrangelove/SCADAPASS/tree/master) GitHub repository which contains a list of default passwords for a variety of different vendors.
+
+## Vulnerable Password Reset
+
+Password reset mechanisms are a common feature in web applications. They allow users to reset their passwords if they forget them. Typically, the user provides an email address or username, and the application sends a password reset link or token to the user's email address. The user can then use the link or token to reset their password.
+
+Often, web applications authenticate users who have lost their passwords by requesting that they answer one or multiple security questions. During registration, users provide answers to predefined and generic security questions, disallowing users from entering custom ones. Therefore, within the same web application, the security questions of all users will be the same, allowing attackers to abuse them.
+
+Another instance of a flawed password reset logic occurs when a user can manipulate a potentially hidden parameter to reset the password of a different account.
+
+## Authentication Bypass via Direct Access
+
+Authentication bypass via direct access is a vulnerability that allows an attacker to access restricted resources without providing valid credentials. This vulnerability typically occurs when an application fails to properly enforce authentication controls on sensitive resources.
+
+Attackers can exploit authentication bypass vulnerabilities to gain unauthorized access to sensitive data or functionality. By directly accessing restricted resources without authentication, attackers can bypass security controls and perform unauthorized actions.
+
+To prevent authentication bypass vulnerabilities, developers should ensure that all sensitive resources are properly protected by authentication controls. Access to sensitive resources should be restricted to authenticated users only, and proper authorization checks should be performed to verify that the authenticated user has the necessary permissions to access the resource.
+
+## Authentication Bypass via Parameter Modification
+
+An authentication implementation can be flawed if it depends on the presence or value of an HTTP parameter, introducing authentication vulnerabilities. Attackers can exploit these vulnerabilities by manipulating the parameters to bypass authentication controls and gain unauthorized access to sensitive resources.
+
+This type of vulnerability is closely related to authorization issues such as Insecure Direct Object Reference (IDOR) vulnerabilities, where attackers can manipulate parameters to access unauthorized resources. By modifying parameters, attackers can bypass authentication controls and access sensitive data or functionality without providing valid credentials.
+
+## Attacking Session Tokens
+

@@ -1,0 +1,11 @@
+Password does not meet our password policy:
+Contains at least one digit
+Contains at least one lower-case character
+Contains at least one upper-case character
+Contains NO special characters
+Is exactly 12 characters long
+
+gladys dWinaldasD13
+Admin 
+
+
